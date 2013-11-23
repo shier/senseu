@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<style type="text/css">
+#itemContainer{position:absolute; background:#CF9}
+.bigitem { position:absolute; background:#006}
+.smallItem { position:absolute; background:#C00}
+</style>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script>
+var cenx=300
+var ceny=200
+
+var bigsize=100
+var smallsize=50
+var itemNumber=10
+var r=100
+var dealys=100
+var iconList=["DR","FA","IA","RU","SI","SIA","SIB","SL","ST","WA","UN_back"]
+var cenID="";
+function getItemID(itemName){
+	for(var i=0;i<iconList.length;i++){
+		if (iconList[i]==itemName){
+			return i
+		}
+	}
+	return -1;
+}
+$(function(){
+	centName="DR"
+	centID=getItemID(centName)
+	$('#itemContainer div').each(function(){$(this).remove()});
+	areaSize=smallsize+r*2
+	$('#itemContainer').width(areaSize)
+	$('#itemContainer').height(areaSize)
+	$('#itemContainer').css("left",cenx-areaSize/2)
+	$('#itemContainer').css("top",ceny-areaSize/2)
+	childDiv=$('<div class="bigitem" id="bigItem"><img src="images/ex_'+iconList[centID]+'.png" width='+bigsize+' height='+bigsize+' /></div>');
+	childDiv.appendTo($('#itemContainer'));
+	$('#bigItem').width(bigsize)
+	$('#bigItem').height(bigsize)
+	$('#bigItem').css("left",(areaSize-bigsize)/2)
+	$('#bigItem').css("top",(areaSize-bigsize)/2)
+	j=0
+	for(i=0;i<itemNumber;i++){
+		if (i != centID){
+			
+			childDiv=$('<div class="smallItem" id="smallItem'+i+'"><img src="images/ex_'+iconList[i]+'.png"  width='+smallsize+' height='+smallsize+' /></div>');
+			childDiv.appendTo($('#itemContainer'));
+			$('#smallItem'+i).attr("iconID",i)
+			var a=(j/(itemNumber-1)-0.25)*2*Math.PI
+			var x=areaSize/2+r*Math.cos(a)
+			var y=areaSize/2+r*Math.sin(a)
+			$('#smallItem'+i).width(smallsize)
+			$('#smallItem'+i).height(smallsize)
+			$('#smallItem'+i).css("left",x-smallsize/2)
+			$('#smallItem'+i).css("top",y-smallsize/2)
+			//childDiv.bind("mouseenter",{id:i},showWarningBack);
+			//childDiv.bind("mouseleave",{id:i},hideWarningBack);	
+			j++
+		}
+	}
+	
+});
+</script>
+<body>
+<div id="itemContainer" ></div>
+</body>
+</html>
