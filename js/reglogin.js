@@ -1,11 +1,11 @@
 //------------解决https跳转问题
 
 var url = location.href; 
-var paraString = url.substring(0,5)
+var paraString = url.substring(0,5);
 
 if(paraString=="http:"){
-	var restStr=url.substring(5,url.length)	
-	location.href="https:"+restStr
+	var restStr=url.substring(5,url.length);
+	location.href="https:"+restStr;
 }
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-7840951-15']);
@@ -15,7 +15,7 @@ _gaq.push(['_trackPageview']);
 		var ww=$(window).width();
 		var wh=$(window).height();
 		
-		pageID==1 ? fleft=(ww-1000)/2: fleft=(ww-$('#main').width())/2
+		pageID==1 ? fleft=(ww-1000)/2: fleft=(ww-$('#main').width())/2;
 		if(fleft>=0){
 			$('#main').css("left",fleft);
 		}
@@ -27,19 +27,19 @@ _gaq.push(['_trackPageview']);
 		var ww=$(window).width();
 		var wh=$(window).height();
 		
-		if(ww<1000){ww=1000}
+		if(ww<1000){ww=1000;}
 		$('#maxContent').width(ww);
 		
 		if(ww>1440){
 			$('#maxContent').css("left",(ww-1440)/2);
-			$('#videoWindow').css("left",0)
-			$('#btnGroup').css("left",420)
+			$('#videoWindow').css("left",0);
+			$('#btnGroup').css("left",420);
 			$('#buy').css("left",1024);
 		}else{
 			$('#maxContent').css("left",0);
 			
-			$('#videoWindow').css("left",(ww-1440)/2)
-			$('#btnGroup').css("left",420+(ww-1440)/2)
+			$('#videoWindow').css("left",(ww-1440)/2);
+			$('#btnGroup').css("left",420+(ww-1440)/2);
 			$('#buy').css("left",1024+(ww-1440)/2);
 		}
 		
@@ -56,15 +56,15 @@ _gaq.push(['_trackPageview']);
 	
 	function resizeArea(){
 		var ww=$(window).width();
-		if(ww<1000){ww=1000}
+		if(ww<1000){ww=1000;}
 		var wh=$(window).height();
 		var ws=$(window).scrollTop();
 		$('#darkBack').css('top',ws);
 		$('#darkBack').width(ww);
 		$('#darkBack').height(wh);
-		pageID==1 ? fleft=(ww-1000)/2: fleft=(ww-$('#main').width())/2
+		pageID==1 ? fleft=(ww-1000)/2: fleft=(ww-$('#main').width())/2;
 		//var fleft=(ww-$('#main').width())/2
-		if(fleft<0){fleft=0}
+		if(fleft<0){fleft=0;}
 		$('#main').css("left",fleft);
 		
 		changepos(ww,wh,ws,fleft,'popupReg');
@@ -115,17 +115,17 @@ _gaq.push(['_trackPageview']);
 		$('.slider-nav').hide();
 		$('.orbit-bullets').hide();
 		$('.timer').hide();
-		$('#darkBack').fadeIn(50)
+		$('#darkBack').fadeIn(50);
 		$('#'+pname).show();
 		if(pname=="popupReg"){
-			$('#popupRegFrame').attr("src","popupreg.php?act="+pare)	
+			$('#popupRegFrame').attr("src","popupreg.php?act="+pare);	
 		}
 	}
 	function showwait(title,content){
 		resizeArea();
-		$('#darkBack').fadeIn(50)
+		$('#darkBack').fadeIn(50);
 		$('#waitTitle').html(title);
-		$('#waitContent').html(content)
+		$('#waitContent').html(content);
 		var oldtop=$('#wait').css("top");
 		$('#wait').show();
 		$('#wait').css("top",400);
@@ -171,7 +171,7 @@ function checkMobile(){
             };
          }(),
          language:(navigator.browserLanguage || navigator.language).toLowerCase()
-	}
+	};
 	/*
 	document.writeln("语言版本: "+browser.language);
 	document.writeln(" 是否为移动终端: "+browser.versions.mobile);

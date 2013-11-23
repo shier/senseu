@@ -79,11 +79,11 @@ var back_scode=$.cookie('back_scode');
 var back_ecode=$.cookie('back_ecode');
 
 var sensorList=new Array(); 
-var currentSensorID=0
+var currentSensorID=0;
 var myDate = new Date();
 var my=myDate.getFullYear();
 var mm=myDate.getMonth()+1;
-var md=myDate.getDate()
+var md=myDate.getDate();
 	
 var mytime=my+"-"+mm+"-"+md+" "+myDate.toLocaleTimeString();  
 	
@@ -97,19 +97,19 @@ function monthNametoID(name){
 	return 0;
 }
 function changeSex(event){
-	sexID=event.data.id
-	changSexPic(sexID)
+	sexID=event.data.id;
+	changSexPic(sexID);
 
 }
 function changSexPic(sid){
-	if(sid=="M"){sid=0}
-	if(sid=="F"){sid=1}
+	if(sid=="M"){sid=0;}
+	if(sid=="F"){sid=1;}
 	$("#INFO_sex"+sid).attr('src',"images/se_yes.png");
 	$("#INFO_sex"+(1-sid)).attr('src',"images/se_no.png");
 	$('#PRO_sel').fadeOut();
-	sid==0 ? $('#gender').val("M"):$('#gender').val("F")	
+	sid==0 ? $('#gender').val("M"):$('#gender').val("F");
 }
-var timezone
+var timezone;
 function calculate_time_zone() {
 	var rightNow = new Date();
 	var jan1 = new Date(rightNow.getFullYear(), 0, 1, 0, 0, 0, 0);  // jan 1st
@@ -130,9 +130,9 @@ function calculate_time_zone() {
 			std_time_offset = daylight_time_offset;
 		dst = "1"; // daylight savings time is observed
 	}
-	timezone=convert(std_time_offset)
+	timezone=convert(std_time_offset);
 	$("#PRO_sel").val(convert(std_time_offset)+","+dst);
-	$("#PRO_timeZone").val($("#PRO_sel").find("option:selected").text())
+	$("#PRO_timeZone").val($("#PRO_sel").find("option:selected").text());
 	
 }
 
@@ -165,12 +165,12 @@ function showpop(popName){
 	currentPopName=popName;
 	
 	for(var i=0;i<INFO_popupValue.length;i++){
-		var nobj=INFO_popupValue[i]
+		var nobj=INFO_popupValue[i];
 		if(popName==nobj.name){
 			$('#PRO_popup').css("left",nobj.posx);
 			$('#PRO_popup').css("top",nobj.posy);
-			$('#PRO_sel').width(nobj.width)
-			$('#PRO_sel').attr("size",nobj.rowNumber)
+			$('#PRO_sel').width(nobj.width);
+			$('#PRO_sel').attr("size",nobj.rowNumber);
 			$('#PRO_sel option').each(function(){$(this).remove();}); 
 			for(var j=0;j<nobj.value.length;j++){$("#PRO_sel").append("<option value='"+nobj.value[j].id+"'>"+nobj.value[j].text+"</option>");}
 			if(popUpChanged){
@@ -193,26 +193,26 @@ $(function(){
 		}
 		//---------时区
 		$(".PRO_clickInput").bind({
-			click:function(){showpop($(this).children().attr("id"))}
+			click:function(){showpop($(this).children().attr("id"));}
 		});
 
 		$('#PRO_sel').bind({
 			change:function(event){
 				$(this).fadeOut();
 				if($("#"+currentPopName).val()==$(this).find("option:selected").text()){return;}
-				$("#"+currentPopName).val($(this).find("option:selected").text())
+				$("#"+currentPopName).val($(this).find("option:selected").text());
 				$("#"+currentPopName).css("color","#6b6b6b");
-				var value=$("#"+currentPopName).val()
+				var value=$("#"+currentPopName).val();
 				var showValue;
 				switch(currentPopName){
 					case "PRO_hUnit":
 					case "PRO_sUnit":
-						if(value=="foot"){changeUnit("Inch")};
-						if(value=="cm"){changeUnit("Metric")};
+						if(value=="foot"){changeUnit("Inch");}
+						if(value=="cm"){changeUnit("Metric");}
 					break;
 					case "PRO_wUnit":
-						if(value=="lb"){changeUnit("Inch")};
-						if(value=="kg"){changeUnit("Metric")};
+						if(value=="lb"){changeUnit("Inch");}
+						if(value=="kg"){changeUnit("Metric");}
 					break;	
 				}
 				
@@ -284,10 +284,10 @@ $(function(){
 		$('#PRO_submit').bind({
 			click:function(){
 				if($("#PRO_infoArea").css("display") =="block"){
-					savePersonalInfo()
+					savePersonalInfo();
 				}
 				if($("#PRO_passwordArea").css("display") =="block"){
-					savePassword()
+					savePassword();
 				}
 			}
 		});
@@ -305,24 +305,24 @@ function savePersonalInfo(){
 	$('#errInfo').html();
 	if($('#PRO_userName').val()==""){
 		$('#errInfo').html("Please type in your username");
-		return
+		return;
 	}
 	
 	if($('#PRO_h1').val()==""){
 		$('#errInfo').html("Please input your height");
-		return
+		return;
 	}
 	if($('#PRO_w').val()==""){
 		$('#errInfo').html("Please input your weight");
-		return
+		return;
 	}
 	if($('#PRO_month').val()=="Month" ||$('#PRO_day').val()=="Day" ||$('#PRO_year').val()=="Year" ){
 		$('#errInfo').html("Please select your birthday");
-		return
+		return;
 	}
 	if($('#PRO_s1').val()==""){
 		$('#errInfo').html("Please input your step width");
-		return
+		return;
 	}
 	
 
@@ -339,7 +339,7 @@ function savePersonalInfo(){
 		url:'res/saveprofile.php',
 		data:JSON.stringify(outData), 
         success: function (msg) {
-			back_ecode=msg.ecode
+			back_ecode=msg.ecode;
 			$.cookie('back_ecode', back_ecode);
 			$('#PRO_replyInfo').html("Profile updated");
 			$('#PRO_reply').show();
@@ -386,10 +386,10 @@ function savePassword(){
 		data:JSON.stringify(outData), 
         success: function (msg) {
 			if (msg.status==401){
-				$('#er_1').html('Your current password was incorrect.')
+				$('#er_1').html('Your current password was incorrect.');
 			}			
 			if (msg.status==200){
-				back_ecode=msg.ecode
+				back_ecode=msg.ecode;
 				$.cookie('back_ecode', back_ecode);
 				$('#PRO_replyInfo').html("Password changed");
 				$('#PRO_reply').show();
@@ -406,42 +406,42 @@ function autohide(){
 	}); 
 }
 function unitToMetric(obj){
-	var v1,v2
+	var v1,v2;
 	
 	if(obj.from=="cm"){
 		//v1=Number(obj.cm)/30.48; //------1英寸=2.54cm
-		v1=Number(obj.cm)
+		v1=Number(obj.cm);
 		return v1;
 	}
 	if(obj.from=="foot"){
 		v1=Number(obj.foot)+Number(obj.inch)/12;
-		v1*=30.48
+		v1*=30.48;
 		return v1;
 	}
 	if(obj.from=="lb"){
 		//v1=obj.lb;
-		v1=Number(obj.lb)*0.45359237
+		v1=Number(obj.lb)*0.45359237;
 		return v1;
 	}
 	
 	if(obj.from=="kg"){
 		//v1=Number(obj.kg)/0.45359237;
-		v1=Number(obj.kg)
+		v1=Number(obj.kg);
 		return v1;
 	}
 }
 function getFromTemp(obj){
-	var v1,v2
+	var v1,v2;
 	var value=Number(obj.value);
 	if(obj.to=="foot"){
-		value/=30.48
-		v2=Math.floor(value)
+		value/=30.48;
+		v2=Math.floor(value);
 		v1=((value-v2)*12).toFixed(0);
 		return {foot:v2,inch:v1};
 	}	
 	if(obj.to=="cm"){
 		//v1=Math.floor(2.54*value*12);
-		v1=value.toFixed(0)
+		v1=value.toFixed(0);
 		return {cm:v1};
 	}
 	if(obj.to=="lb"){
@@ -451,7 +451,7 @@ function getFromTemp(obj){
 	}
 	if(obj.to=="kg"){
 		//v1=Math.floor(value/0.045359237)/10;
-		v1=value.toFixed(1)
+		v1=value.toFixed(1);
 		return {kg:v1};
 	}
 }
@@ -481,7 +481,7 @@ function getUserInfo(){
 	var nmyDate = new Date();
 	var nmy=nmyDate.getFullYear();
 	var nmm=nmyDate.getMonth()+1;
-	var nmd=nmyDate.getDate()
+	var nmd=nmyDate.getDate();
 	
 	var nmytime=nmy+"-"+nmm+"-"+nmd+" "+nmyDate.toLocaleTimeString();
 	
@@ -500,19 +500,19 @@ function dealData(r){
 
 	
 	
-	if(r.status != 200 ){return}
-	back_ecode=r.ecode
+	if(r.status != 200 ){return;}
+	back_ecode=r.ecode;
 	$.cookie('back_ecode', back_ecode);
-	sensorList=r.sensorList
+	sensorList=r.sensorList;
 	//------add in sensor list
-	$('#PRO_sensor div').each(function(){$(this).remove()});
-	var obj
+	$('#PRO_sensor div').each(function(){$(this).remove();});
+	var obj;
 	for(var i=0;i<sensorList.length;i++){
 		j=i+1;
 		obj=sensorList[i];
 		
 		var power="0000"+obj.power;
-		power=power.substring(power.length-4,power.length)
+		power=power.substring(power.length-4,power.length);
 
 		var strs='<div id="sensoritem'+i+'" class="PRO_senList"><table cellpadding="0" cellspacing="0">';
 		strs+='<tr height=43><td><div class="PRO_senNO">'+j+'</div></td><td width=25><img src="images/sensor'+power+'.png" />';
@@ -523,41 +523,41 @@ function dealData(r){
 	showSensor();
 }
 function showSensor(){
-	var obj=sensorList[currentSensorID]
+	var obj=sensorList[currentSensorID];
 	if (obj.dob != "0000-00-00"){
-		var dob=obj.dob
+		var dob=obj.dob;
 		$('#PRO_year').val(Number(dob.substring(0,4)));
 		$('#PRO_month').val(monthNameList[Number(dob.substring(5,7))-1]);
 		$('#PRO_day').val(Number(dob.substring(8,10)));
-		$('#PRO_year').css("color","#6b6b6b")
-		$('#PRO_month').css("color","#6b6b6b")
-		$('#PRO_day').css("color","#6b6b6b")
+		$('#PRO_year').css("color","#6b6b6b");
+		$('#PRO_month').css("color","#6b6b6b");
+		$('#PRO_day').css("color","#6b6b6b");
 	}
 	if(obj.nickname != undefined){
-		$('#PRO_userName').val(obj.nickname)
+		$('#PRO_userName').val(obj.nickname);
 		
 	}
 	if(obj.height != undefined){
-		$('#tempH').val(obj.height)
-		$('#PRO_h1').val(obj.height)
+		$('#tempH').val(obj.height);
+		$('#PRO_h1').val(obj.height);
 	}
 	if(obj.weight != undefined){
-		$('#tempW').val(obj.weight)
-		$('#PRO_w').val(obj.weight)
+		$('#tempW').val(obj.weight);
+		$('#PRO_w').val(obj.weight);
 	}
 	if(obj.stepwidth != undefined){
-		$('#tempS').val(obj.stepwidth)
-		$('#PRO_s1').val(obj.stepwidth)
+		$('#tempS').val(obj.stepwidth);
+		$('#PRO_s1').val(obj.stepwidth);
 	}
 	$("#Pro_head").attr("src",'upload/'+obj.headimage); 
 	
-	$("#Pro_head").width(182)
-	$("#Pro_head").height(182)
+	$("#Pro_head").width(182);
+	$("#Pro_head").height(182);
 	
 	if(obj.gender != undefined){
-		changSexPic(obj.gender)
+		changSexPic(obj.gender);
 	}
-	changeUnit(obj.unit)
+	changeUnit(obj.unit);
 
 }
 function changeUnit(units){
@@ -567,17 +567,17 @@ function changeUnit(units){
 		showValue=getFromTemp({to:"cm",value:$('#tempH').val()});
 		$("#h_u1").html("cm");$("#h_u2").html("");
 		$("#h_u1").width(100);$("#h_v2").hide();
-		$('#PRO_h1').val(showValue.cm)
-		$('#PRO_h2').val(0)
+		$('#PRO_h1').val(showValue.cm);
+		$('#PRO_h2').val(0);
 		$('#PRO_hUnit').val("cm");
 		showValue=getFromTemp({to:"cm",value:$('#tempS').val()});
 		$("#s_u1").html("cm");$("#s_u2").html("");
 		$("#s_u1").width(100);$("#s_v2").hide();
-		$('#PRO_s1').val(showValue.cm)
-		$('#PRO_s2').val(0)
+		$('#PRO_s1').val(showValue.cm);
+		$('#PRO_s2').val(0);
 		$('#PRO_sUnit').val("cm");
 		showValue=getFromTemp({to:"kg",value:$('#tempW').val()});
-		$('#PRO_w').val(showValue.kg)
+		$('#PRO_w').val(showValue.kg);
 		$("#w_u").html("kg");
 		$('#PRO_wUnit').val("kg");
 	}
@@ -585,18 +585,18 @@ function changeUnit(units){
 		showValue=getFromTemp({to:"foot",value:$('#tempH').val()});
 		$("#h_u1").html("feet");$("#h_u2").html("inches");
 		$("#h_u1").width(40);$("#h_v2").show();
-		$('#PRO_h1').val(showValue.foot)
-		$('#PRO_h2').val(showValue.inch)
+		$('#PRO_h1').val(showValue.foot);
+		$('#PRO_h2').val(showValue.inch);
 		$('#PRO_hUnit').val("foot");
 		showValue=getFromTemp({to:"foot",value:$('#tempS').val()});
 		$("#s_u1").html("feet");$("#s_u2").html("inches");
 		$("#s_u1").width(40);$("#s_v2").show();
-		$('#PRO_s1').val(showValue.foot)
-		$('#PRO_s2').val(showValue.inch)
+		$('#PRO_s1').val(showValue.foot);
+		$('#PRO_s2').val(showValue.inch);
 		$('#PRO_sUnit').val("foot");
 		
 		showValue=getFromTemp({to:"lb",value:$('#tempW').val()});
-		$('#PRO_w').val(showValue.lb)
+		$('#PRO_w').val(showValue.lb);
 		$("#w_u").html("lbs");
 		$('#PRO_wUnit').val("lb");
 	}
@@ -604,5 +604,5 @@ function changeUnit(units){
 function updatedHead(headpic){
 	//alert("change profile"+headpic);
 	$("#Pro_head").attr("src","upload/"+headpic); 
-	parent.updatedHead(headpic)
+	parent.updatedHead(headpic);
 }

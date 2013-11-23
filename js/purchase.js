@@ -8,19 +8,19 @@ var colorID=0;
 var pageName="purchase";
 var colorName=["Black","White"];
 function getCookies(cname,tmode){
-	var cvalue=$.cookie(cname)	
+	var cvalue=$.cookie(cname);	
 	if(tmode==1 && cvalue==null){
-		cvalue=0
+		cvalue=0;
 	}
 	if(tmode==0 && cvalue==null){
-		cvalue=""
+		cvalue="";
 	}
 	return cvalue;
 }
 $(function(){
 	//读取Cookies
 	
-	if(quantity==0){quantity=1}
+	if(quantity==0){quantity=1;}
 	$('#color_0').bind({
 		click:function(event){showColor(0);}
 	});	
@@ -42,10 +42,10 @@ $(function(){
 	});
 	 $("#inputNumber").blur(function(){
 	 	if(parseInt($('#inputNumber').val())==0 || $('#inputNumber').val()==""){
-			$('#inputNumber').val(1)
+			$('#inputNumber').val(1);
 		}
 		quantity=parseInt($('#inputNumber').val());
-		showTotal()
+		showTotal();
 	 });
 	 
 	$('#addNumber').bind({
@@ -59,24 +59,24 @@ $(function(){
 });
 function changeNum(num){
 	quantity=parseInt($('#inputNumber').val());
-	quantity+=num
-	if(quantity<1){quantity=1}
-	if(quantity>9999){quantity=9999}
+	quantity+=num;
+	if(quantity<1){quantity=1;}
+	if(quantity>9999){quantity=9999;}
 	$('#inputNumber').val(quantity);
 	showTotal();
 }
 function showTotal(){
-	var totalNum=quantity*9998
+	var totalNum=quantity*9998;
 	$('#priceBig').html("$"+parseInt(totalNum/100)+".");
-	var subNum=totalNum-100*parseInt(totalNum/100)
+	var subNum=totalNum-100*parseInt(totalNum/100);
 	if(subNum>9){
 	$('#priceSmall').html(subNum);
 	}else{
 	$('#priceSmall').html(subNum+"0");	
 	}
-	$('#priceBigTotal').html($('#priceBig').html())
-	$('#priceSmallTotal').html($('#priceSmall').html())
-	$('#inputNumber').val(quantity)
+	$('#priceBigTotal').html($('#priceBig').html());
+	$('#priceSmallTotal').html($('#priceSmall').html());
+	$('#inputNumber').val(quantity);
 	outPay();
 }
 function showColor(cid){
@@ -102,21 +102,19 @@ function outPay(){
     str+=' data-image="128x128.png"></'+'script></form>';
 	*/
 	
-totalamount=quantity*9998;
-desc=quantity+'_'+colorName[colorID]+'_Sense-U_Device.';
+	totalamount=quantity*9998;
+	desc=quantity+'_'+colorName[colorID]+'_Sense-U_Device.';
 
-str='<form action="savepurchase.php?amount='+totalamount+'&desc='+desc+'"  method="POST">'
-  str+='<script '
-    str+='src="https://checkout.stripe.com/checkout.js" class="stripe-button"'
-    str+=' data-key="pk_live_IaFABXjser7H5FuhXu9MkQ1u"'
-    str+=' data-image="logo.jpg" '
-     str+=' data-name="sense-u purchase" ';
+	str='<form action="savepurchase.php?amount='+totalamount+'&desc='+desc+'"  method="POST">';
+  	str+='<script ';
+    str+='src="https://checkout.stripe.com/checkout.js" class="stripe-button"';
+    str+=' data-key="pk_live_IaFABXjser7H5FuhXu9MkQ1u"';
+    str+=' data-image="logo.jpg" ';
+    str+=' data-name="sense-u purchase" ';
     str+=' data-description='+desc;
-    str+=' data-amount="'+totalamount+'">'
-  str+='<' + '/script>'
-str+='</form>'
-
-
-  	$("#payit").html(str)
+    str+=' data-amount="'+totalamount+'">';
+  	str+='<' + '/script>';
+	str+='</form>';
+  	$("#payit").html(str);
 }
 

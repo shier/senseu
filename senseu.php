@@ -329,16 +329,10 @@ input {text-align:center; border:none}
 <link rel="stylesheet" href="css/jquery.ui.timepicker.css" type="text/css" />
 
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-
-
-    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.widget.min.js"></script>
-    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.tabs.min.js"></script>
-    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.position.min.js"></script>
-
-    <script type="text/javascript" src="js/jquery.ui.timepicker.js"></script>
-
- 
-
+<script type="text/javascript" src="js/ui-1.10.0/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" src="js/ui-1.10.0/jquery.ui.tabs.min.js"></script>
+<script type="text/javascript" src="js/ui-1.10.0/jquery.ui.position.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.timepicker.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script type="text/javascript" src="js/excanvas.js"></script>

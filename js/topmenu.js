@@ -1,15 +1,15 @@
 var afterLoginJump=0;
-var afterLoginUrl=""
+var afterLoginUrl="";
 var menuList=new Array();
-menuList[1]="index.php"
-menuList[2]="senseu.php"
-menuList[3]="howitworks.php"
+menuList[1]="index.php";
+menuList[2]="senseu.php";
+menuList[3]="howitworks.php";
 //menuList[4]="http://www.indiegogo.com/projects/sense-u-the-world-s-first-all-in-one-activity-tracker-to-connect-your-family/"
-menuList[4]="purchase.php"
+menuList[4]="purchase.php";
 var myDate = new Date();
 var my=myDate.getFullYear();
 var mm=myDate.getMonth()+1;
-var md=myDate.getDate()
+var md=myDate.getDate();
 	
 var mytime=my+"-"+mm+"-"+md+" "+myDate.toLocaleTimeString();  
 	
@@ -34,14 +34,14 @@ $(function(){
 	$('#reg').click(function(){
 		//$.cookie('afterLoginJump','');
 		$('#upWrongInfo').html('');
-  		showSignUp()
+  		showSignUp();
 	});
 	$('#passwordt').bind ({
 		focusin: function(event){
 			var v=$('#passwordt').val();
 			if(v=="password"){
-				$('#passwordt').hide()
-				$('#up_loginPass').show()
+				$('#passwordt').hide();
+				$('#up_loginPass').show();
 				$('#up_loginPass').focus();
 			}
 		}
@@ -57,7 +57,7 @@ $(function(){
 		focusout: function(event){
 			var v=$('#up_loginEmail').val();
 			if(v==""){
-				$('#up_loginEmail').val("email")
+				$('#up_loginEmail').val("email");
 				$('#up_loginEmail').css("color","#cccccc");
 			}
 		}
@@ -66,8 +66,8 @@ $(function(){
 		focusout: function(event){
 			var v=$('#up_loginPass').val();
 			if(v==""){
-				$('#up_loginPass').hide()
-				$('#passwordt').show()
+				$('#up_loginPass').hide();
+				$('#passwordt').show();
 			}
 		}
 	});
@@ -79,7 +79,7 @@ $(function(){
 	if($.cookie('back_loginMode')=='1'){
 		processLogin();
 	}else{
-		$('#newlogin').show()
+		$('#newlogin').show();
 	}
 
 	$('#btn_profile').bind({
@@ -101,7 +101,7 @@ $(function(){
 	for(i=1;i<5;i++){
 		if(i != parent.pageID){
 			$('#menu'+i).addClass("homeMenuBtn");
-			$('#menu'+i).attr("mid",i)
+			$('#menu'+i).attr("mid",i);
 			$('#menu'+i).click(function(){
 			//alert($(this).attr("mid"))
 				if($(this).attr("mid")==2  && $.cookie('back_loginMode')==null){
@@ -144,7 +144,7 @@ function checkLogin(){
 	
 	var jmail=$('#up_loginEmail').val();
 	var jpass=$('#up_loginPass').val();
-	var errInfo=$('#up_loginWrong')
+	var errInfo=$('#up_loginWrong');
 	if(jmail=="" || jmail=="email" ){
 		popupReg({mail:"",pass:jpass,mode:"email",err:"Please enter your email address."});
        	return false;
@@ -166,7 +166,7 @@ function checkLogin(){
 	
 	$.cookie('tempEmail', jmail);
 	$('#up_btnLogin').css('cursor','auto');
-	$('#up_btnLogin').unbind("click") 
+	$('#up_btnLogin').unbind("click");
 	$('.up_loginInput').attr('disabled', "disabled");
 	
 	var outData={email:jmail,password:jpass,ndate:mytime,source:"w"};
@@ -175,7 +175,7 @@ function checkLogin(){
         data:JSON.stringify(outData), 
         success: function (msg) {dealLoginRes(msg);},
  		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			enableLoginArea()
+			enableLoginArea();
             popupReg({mail:jmail,pass:jpass,mode:"email",err:"unknown error."});
 		}
     });
@@ -207,7 +207,7 @@ function checkLogin(){
 	}
 	function enableLoginArea(){
 		$('#up_btnLogin').css('cursor','pointer');
-		$('#up_btnLogin').click(function(){checkLogin()});
+		$('#up_btnLogin').click(function(){checkLogin();});
 		$('.up_loginInput').removeAttr("disabled"); 
 	}
 function popupReg(pere){

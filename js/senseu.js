@@ -10,7 +10,7 @@ Number.prototype.toFixed=function(len){
 	var temp = Math.pow(10,len);
 	s = Math.floor(this * temp) + add;
 	return s/temp;
-}
+};
 
 document.write("<script type='text/javascript' src='js/reglogin.js'></"+"script>"); 
 	var pageName="mysenseu";
@@ -31,12 +31,12 @@ document.write("<script type='text/javascript' src='js/reglogin.js'></"+"script>
 	var oldMonth=0;
 	var allDataList=new Array();
 	var nowDate=new Date();
-	var nowDateStr=nowDate.getFullYear()+"-"+(nowDate.getMonth()+1)+"-"+nowDate.getDate()
-	var minDateStr=""
+	var nowDateStr=nowDate.getFullYear()+"-"+(nowDate.getMonth()+1)+"-"+nowDate.getDate();
+	var minDateStr="";
 	var myDate = new Date();
 	var my=myDate.getFullYear();
 	var mm=myDate.getMonth()+1;
-	var md=myDate.getDate()
+	var md=myDate.getDate();
 	
 	var mytime=my+"-"+mm+"-"+md+" "+myDate.toLocaleTimeString();  
 	//alert (my+"-"+mm+"-"+md+" "+mytime)
@@ -56,33 +56,33 @@ document.write("<script type='text/javascript' src='js/reglogin.js'></"+"script>
 
 	//var tempEmail=$.cookie('tempEmail');
 	//----------------------summary list-------------
-	var sumSelectID=1
+	var sumSelectID=1;
 
-	var sumNameBar=new Array()
-	sumNameBar[1]=["Calories","ACT_cal","ACT_calValue"]
-	sumNameBar[2]=["Steps Taken","ACT_steps","ACT_stepsValue"]
-	sumNameBar[3]=["Miles Travel","ACT_miles","ACT_milesValue"]
+	var sumNameBar=new Array();
+	sumNameBar[1]=["Calories","ACT_cal","ACT_calValue"];
+	sumNameBar[2]=["Steps Taken","ACT_steps","ACT_stepsValue"];
+	sumNameBar[3]=["Miles Travel","ACT_miles","ACT_milesValue"];
 	
 
 	var carTitleItem=new Array();
-	carTitleItem[1]={leftTitle:"Calories",iconImage:"act_bar_cal.png",currentValue:0,totalValue:0,percent:0,units:"Calories"}
-	carTitleItem[2]={leftTitle:"Steps",iconImage:"act_bar_step.png",currentValue:0,totalValue:0,percent:0,units:"Steps"}
-	carTitleItem[3]={leftTitle:"Travel",iconImage:"act_bar_dis.png",currentValue:0,totalValue:0,percent:0,units:"Km"}
+	carTitleItem[1]={leftTitle:"Calories",iconImage:"act_bar_cal.png",currentValue:0,totalValue:0,percent:0,units:"Calories"};
+	carTitleItem[2]={leftTitle:"Steps",iconImage:"act_bar_step.png",currentValue:0,totalValue:0,percent:0,units:"Steps"};
+	carTitleItem[3]={leftTitle:"Travel",iconImage:"act_bar_dis.png",currentValue:0,totalValue:0,percent:0,units:"Km"};
 	
 	
 
 	
-	var backPos=new Array()
-	backPos[1]={itemName:"l_proBarCal",x:34,y:206,w:934,oy:206,pic:"actbar_backb.png"}
-	backPos[2]={itemName:"m_proStep",x:34,y:289,w:463,oy:289,pic:"actbar_backs.png"}
-	backPos[3]={itemName:"m_proMile",x:505,y:289,w:463,oy:289,pic:"actbar_backs.png"}
-	var CCID=1 //----------currentChartID
+	var backPos=new Array();
+	backPos[1]={itemName:"l_proBarCal",x:34,y:206,w:934,oy:206,pic:"actbar_backb.png"};
+	backPos[2]={itemName:"m_proStep",x:34,y:289,w:463,oy:289,pic:"actbar_backs.png"};
+	backPos[3]={itemName:"m_proMile",x:505,y:289,w:463,oy:289,pic:"actbar_backs.png"};
+	var CCID=1;//----------currentChartID
 	//---------------------warning list-----------------
-	var warnList=new Array()
-	warnList.push({name:"war_act",value:0})
-	warnList.push({name:"war_cal",value:0})
-	warnList.push({name:"war_step",value:0})
-	warnList.push({name:"war_dis",value:0})
+	var warnList=new Array();
+	warnList.push({name:"war_act",value:0});
+	warnList.push({name:"war_cal",value:0});
+	warnList.push({name:"war_step",value:0});
+	warnList.push({name:"war_dis",value:0});
 
 	var back_ucode=$.cookie('back_ucode');
 	var back_scode=$.cookie('back_scode');
@@ -109,13 +109,13 @@ document.write("<script type='text/javascript' src='js/reglogin.js'></"+"script>
 	
 	orderList.push("changeDatebyNum(0)");
 //------mode为1：HHMM格式时间抓换为 HH|MM|am/pm 格式，mode为2则总分钟数转换------------
-	var bigCal,sumAct,mStep,mMile,sumSlp,bigSlp //-----------状态条
+	var bigCal,sumAct,mStep,mMile,sumSlp,bigSlp; //-----------状态条
 	
 	var sensorList=new Array(); 
-	var currentSensorID=0
+	var currentSensorID=0;
 	var act=new chartArea(); //---pre define act chart, for it will be change manytimes 
 	
-	var switchsleepMode=0
+	var switchsleepMode=0;
 		
 $(function(){
 	//if($.browser.msie){$.fx.off=true}
@@ -124,8 +124,8 @@ $(function(){
 			$.cookie('back_ucode', null);
 			$.cookie('back_scode', null);
 			$.cookie('back_ecode', null);
-			$.cookie('back_loginMode',null)
-			parent.location="index.php"
+			$.cookie('back_loginMode',null);
+			parent.location="index.php";
 			return;
 		}
 		$('#INFO_btnComplete').button({
@@ -155,7 +155,7 @@ $(function(){
 				
 				if(oldMonth!=currentDate.getMonth()+1){
 					$("#IFRAME_calc").attr("src","calendar.html?year="+currentDate.getFullYear()+"&month="+(currentDate.getMonth()+1)+"&day="+currentDate.getDate());
-					oldMonth=currentDate.getMonth()+1
+					oldMonth=currentDate.getMonth()+1;
 				}else{
 					
 					$("#IFRAME_calc")[0].contentWindow.setupNewDay(currentDate.getDate());
@@ -243,7 +243,7 @@ $(function(){
 		sumSlp=new barItem();
 		bigSlp=new barItem();
 		
-		sumSetDefault()
+		sumSetDefault();
 		
 		
 		resizeArea();
@@ -325,31 +325,31 @@ $(function(){
 });	
 
 	function conver24to12(timeString,mode){
-		var nh,nm
+		var nh,nm;
 		//mode=0: hhmm, mode=1:timeid, mode=2: hh:mm:ss
 		if(mode==0){
-			nh=Number(timeString.substring(0,2))
-			nm=timeString.substring(2,4)
+			nh=Number(timeString.substring(0,2));
+			nm=timeString.substring(2,4);
 		}
 		if(mode==2){
-			nh=Number(timeString.substring(0,2))
-			nm=timeString.substring(3,5)
+			nh=Number(timeString.substring(0,2));
+			nm=timeString.substring(3,5);
 		}
 		if(mode==1){
 			if(timeString>1440){timeString-=1440;};
-			nh=Math.floor(timeString/60)
+			nh=Math.floor(timeString/60);
 			nm=(100+timeString-nh*60)+'';
-			nm=nm.substring(1,3)
+			nm=nm.substring(1,3);
 		}
 		var timeStr="am";
 		if(nh >= 12){
-			timeStr="pm"
+			timeStr="pm";
 		}
 		if(nh==0){
-			nh=12;timeStr="am"
+			nh=12;timeStr="am";
 		}
 		if(nh>12){
-			nh-=12;timeStr="pm"
+			nh-=12;timeStr="pm";
 		}
 		//alert(nh+"|"+nm+"|"+timeStr);
 		return nh+"|"+nm+"|"+timeStr;
@@ -357,7 +357,7 @@ $(function(){
 	function getPercent(cv,tv){
 		
 		if(cv<=tv){
-			return Math.floor(100*cv/tv)
+			return Math.floor(100*cv/tv);
 		}else{
 			return 100;
 		}
@@ -365,17 +365,17 @@ $(function(){
 	function countIDFromDataStr(basetime,nowtime){
 		//---------------根据时间计算出从属ID---------
 		//-----------采用除以5后向下取整-------------
-		var fh,fm,th,tm
+		var fh,fm,th,tm;
 		if(basetime=""){
-			fromid=0
+			fromid=0;
 		}else{
-			fh=Number(basetime.substring(0,2))
-			fm=Number(basetime.substring(2,4))
-			fromid=Math.floor((fh*60+fm)/5)
+			fh=Number(basetime.substring(0,2));
+			fm=Number(basetime.substring(2,4));
+			fromid=Math.floor((fh*60+fm)/5);
 		}
-		th=Number(nowtime.substring(0,2))
-		tm=Number(nowtime.substring(2,4))
-		toid=Math.floor((th*60+tm)/5)
+		th=Number(nowtime.substring(0,2));
+		tm=Number(nowtime.substring(2,4));
+		toid=Math.floor((th*60+tm)/5);
 		return toid-fromid;
 	}
 	
@@ -428,7 +428,7 @@ $(function(){
 	function getWeather(){
 		$.get('http://weather.yahooapis.com/forecastrss?w='+back_citycode+'&u=c',
 		function(d){
-			var tempstr,imgsrc
+			var tempstr,imgsrc;
 			
 			$(d).find('yweather\\:condition').each(function(i){
 				tempstr=$(this).attr('temp');
@@ -436,7 +436,7 @@ $(function(){
 			});
 			
 			$(d).find('description').each(function(i){
-				var tempStr=($(d).text()).split(String.fromCharCode(34))
+				var tempStr=($(d).text()).split(String.fromCharCode(34));
 				for(var i=0;i<tempStr.length;i++){
 					//alert(tempStr[i])
 					if(tempStr[i].indexOf('yimg')>-1 && tempStr[i].indexOf('http')==0 ){
@@ -452,8 +452,8 @@ $(function(){
 	function changeDate(y,m,d){
 		$("#INFO_upperDate").html(monthNameSortList[m]+".<span>"+d+"</span>");
 		$('#Frame_calendar').hide();
-		currentDate=new Date(y,m-1,d)
-		switchsleepMode=0
+		currentDate=new Date(y,m-1,d);
+		switchsleepMode=0;
 		setupAllValue();
 	}
 	function changeDatebyNum(num){
@@ -461,15 +461,17 @@ $(function(){
 		//alert(currentDate);
 		
 		currentDate.setTime(currentDate.getTime()+num*24*3600*1000);
-		dateStr=currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate()
+		dateStr=currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate();
 		
 		
 	}
 	function setupAllValue(){
 		//-------设定当前日期并显示日期---------------
 		
-		dateStr=currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate()
-
+		dateStr=currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate();
+		//clean all map---------
+		
+		
 		/*
 		if(dateStr==nowStr){
 			var hh=currentDate.getHours()<10?"0"+currentDate.getHours():currentDate.getHours();   
@@ -482,7 +484,7 @@ $(function(){
 		*/
 		//alert(dateStr)
 		var dt=currentDate.toString();
-		var tstr=dt.split(" ")
+		var tstr=dt.split(" ");
 		$('#INFO_upperDate').html(tstr[2]+"<br><span>"+tstr[1]+'</span>');
 		
 		//beginLoad();
@@ -500,14 +502,14 @@ $(function(){
 	}
 	function addWarning(r){
 		var dataList=r.info;
-		back_ecode=r.ecode
+		back_ecode=r.ecode;
 		$.cookie('back_ecode', back_ecode);
 	
-		$('#INFO_warGroup div').each(function(){$(this).remove()});	
-		$('#INFO_numGroup div').each(function(){$(this).remove()});	
+		$('#INFO_warGroup div').each(function(){$(this).remove();});	
+		$('#INFO_numGroup div').each(function(){$(this).remove();});	
 
 		for(i=0;i<dataList.length;i++){
-			var obj=dataList[i]
+			var obj=dataList[i];
 			
 			childDiv=$('<div class="INFO_warIcon" id="INFO_war'+i+'"><img src="images/'+warnList[obj.catalog].name+'.png" /></div>');
 			childDiv.appendTo($('#INFO_warGroup'));
@@ -552,8 +554,8 @@ $(function(){
 	function showWarningBack(event){
 		
 		$('#INFO_popup').css("left",336+event.data.id*55);
-		$('#INFO_title').html($('#INFO_war'+event.data.id).attr("titles"))
-		$('#INFO_detail').html($('#INFO_war'+event.data.id).attr("detail"))
+		$('#INFO_title').html($('#INFO_war'+event.data.id).attr("titles"));
+		$('#INFO_detail').html($('#INFO_war'+event.data.id).attr("detail"));
 
 		$('#INFO_popup').fadeIn(20);
 	}
@@ -565,7 +567,7 @@ $(function(){
 	function loadTotalData(){
 		$('#ACT_data').css("opacity",0.2);
 		$('#ACT_time').css("opacity",0.2);
-		showLoading('ACT')
+		showLoading('ACT');
 		back_ecode=$.cookie('back_ecode');
 		var outData={type:"act",ucode:back_ucode,scode:back_scode,dates:dateStr,cdate:mytime,ecode:back_ecode,source:"w"};
 		$.ajax({type: "POST",contentType: "application/json",dataType: "json",
@@ -598,34 +600,36 @@ $(function(){
 		disTaken=Number(r.disTaken);
 		
 		caloriesGoal=Number(r.caloriesGoal);
-		bmr=Number(r.bmr)
+		//bmr=Number(r.bmr);
 		disGoal=Number(r.disGoal);
 		stepGoal=Number(r.stepGoal);
 		
 		footPerStep=Number(r.footPerStep);
 		calTaken=Number(r.calTaken);
 		//calTakenMax=0
-		carTitleItem[1].currentValue=calTaken
-		carTitleItem[1].totalValue=caloriesGoal
+		carTitleItem[1].currentValue=calTaken;
+		carTitleItem[1].totalValue=caloriesGoal;
 		caloriesGoal<calTaken ? carTitleItem[1].percent=100:carTitleItem[1].percent=(calTaken*100/caloriesGoal).toFixed(1);
 		
-		carTitleItem[2].currentValue=stepsTaken
-		carTitleItem[2].totalValue=stepGoal
+		carTitleItem[2].currentValue=stepsTaken;
+		carTitleItem[2].totalValue=stepGoal;
 		stepGoal<stepsTaken ? carTitleItem[2].percent=100:carTitleItem[2].percent=(stepsTaken*100/stepGoal).toFixed(1);
 		
-		carTitleItem[3].currentValue=disTaken
-		carTitleItem[3].totalValue=disGoal.toFixed(3)
+		carTitleItem[3].currentValue=disTaken;
+		carTitleItem[3].totalValue=disGoal.toFixed(3);
 		disGoal<disTaken ? carTitleItem[3].percent=100:carTitleItem[3].percent=(disTaken*100/disGoal).toFixed(1);
 		
 		
 			
-		var slist=""
+		var slist="";
 		//------------seprate to three parts, act,step,distance
 		
 		//0:timeStr |  1: cal | 2: step | 3: dis | 4: | wakup(1) sleep(0) | 5: cal>0 0; act=0 1 color for cal | 6: sleepmode (from sensor) | 7: move value
-		
+		actDataList=[];
+		stepDataList=[];
+		disDataList=[];
 		for(var i=0;i<dataList.length;i++){
-			var subData=dataList[i].split("|")
+			var subData=dataList[i].split("|");
 			actDataList.push( subData[0] +"|" + subData[1] + "|0" );
 			stepDataList.push( subData[0] +"|" + subData[2] + "|0");
 			disDataList.push( subData[0] +"|" + subData[3] + "|0");
@@ -633,7 +637,7 @@ $(function(){
 			//tmpDataList.push( subData[0] +"|" + subData[1] + "|" + subData[7]);	
 		}
 		
-		totalDataList=['',actDataList,stepDataList,disDataList]
+		totalDataList=['',actDataList,stepDataList,disDataList];
 		//var act=new chartArea();
 		act.belongs="ACT";
 		
@@ -641,25 +645,25 @@ $(function(){
 		
 		act.color=["#66bd00","#bfbfbf","#ffa200"];
 		
-		act.itemMainType='bar'
-		act.itemLineType=''
+		act.itemMainType='bar';
+		act.itemLineType='';
 		act.init();
 		
-		actExtraDataList=r.actedata
-		slpExtraDataList=r.slpedata
-		amode=0
+		actExtraDataList=r.actedata;
+		slpExtraDataList=r.slpedata;
+		amode=0;
 		
 		if(actExtraDataList != ""){
 			
 			act.edata=actExtraDataList;
 			act.add();
-			amode=1
+			amode=1;
 		}
 		if(r.falldata.length>0){
-			act.falldata=r.falldata
+			act.falldata=r.falldata;
 			act.addFall();
 		}
-		adjustActArea(amode)
+		adjustActArea(amode);
 		
 		//dealSleepData();
 		
@@ -698,7 +702,7 @@ $(function(){
 	function loadSleepData(){
 		$('#SLP_data').css("opacity",0.2);
 		$('#SLP_time').css("opacity",0.2);
-		showLoading('SLP')
+		showLoading('SLP');
 
 		var outData={type:"sleep",ucode:back_ucode,scode:back_scode,dates:dateStr,cdate:mytime,ecode:back_ecode,source:"w"};
 		$.ajax({type: "POST",contentType: "application/json",dataType: "json",
@@ -714,13 +718,13 @@ $(function(){
 
 	}
 	function dealSleepData(r){
-		hideLoading('SLP')
+		hideLoading('SLP');
 		//--------定义时间日期输入框数值以及起点和终点
-		fdate=r.fdate
-		ftime=r.ftime
-		tdate=r.tdate
-		ttime=r.ttime
-		mindate=r.mindate
+		fdate=r.fdate;
+		ftime=r.ftime;
+		tdate=r.tdate;
+		ttime=r.ttime;
+		mindate=r.mindate;
 		$('#slpFromDay').val(fdate);
 		$('#slpFromMin').val(ftime.substring(0,5));
 		$('#slpToDay').val(tdate);
@@ -733,30 +737,30 @@ $(function(){
 		var dataList=new Array();
 		
 		//----------setup period line. 
-		hourFrom=parseInt(ftime.substring(0,2))
-		hourTo=parseInt(ttime.substring(0,2))
+		hourFrom=parseInt(ftime.substring(0,2));
+		hourTo=parseInt(ttime.substring(0,2));
 		
-		var nfrom=hourFrom
-		var nto=hourTo
-		if(nfrom>12){nfrom-=24}
-		if(nto>12){nto-=24}
-		var def=Math.floor((nto+nfrom)/2)
-		from=-12+def
-		to=12+def
+		var nfrom=hourFrom;
+		var nto=hourTo;
+		if(nfrom>12){nfrom-=24;}
+		if(nto>12){nto-=24;}
+		var def=Math.floor((nto+nfrom)/2);
+		from=-12+def;
+		to=12+def;
 
-		beginHour=12+def
+		beginHour=12+def;
 		
 		fdatestr=fdate.split('-');
 		tdatestr=tdate.split('-');
 		
 		
-		distHour=nfrom-beginHour
-		if(distHour<0){distHour+=24}
+		distHour=nfrom-beginHour;
+		if(distHour<0){distHour+=24;}
 		
-		wb=new Date(fdatestr[0]+"/"+fdatestr[1]+"/"+fdatestr[2]+" "+ftime)
-		wu=new Date(tdatestr[0]+"/"+tdatestr[1]+"/"+tdatestr[2]+" "+ttime)
+		wb=new Date(fdatestr[0]+"/"+fdatestr[1]+"/"+fdatestr[2]+" "+ftime);
+		wu=new Date(tdatestr[0]+"/"+tdatestr[1]+"/"+tdatestr[2]+" "+ttime);
 			
-		sleepTime=parseInt((wu.getTime()-wb.getTime())/60000)
+		sleepTime=parseInt((wu.getTime()-wb.getTime())/60000);
 			
 		
 		
@@ -767,7 +771,7 @@ $(function(){
 		slp.data=sourceDataList;
 		slp.distHour=distHour;
 		slp.drawBaseLine();
-		slp.beginHour=beginHour
+		slp.beginHour=beginHour;
 		slp.slpTimeLong=parseInt(sleepTime/5);
 		slp.setupHour();
 		slp.putData();
@@ -785,10 +789,10 @@ $(function(){
 		
 		
 		eStr=(conver24to12(ftime,2)).split('|');
-		infoStr='<span>'+eStr[0]+':'+eStr[1]+'<span>'+eStr[2]+'</span></span>'
+		infoStr='<span>'+eStr[0]+':'+eStr[1]+'<span>'+eStr[2]+'</span></span>';
 		$('#SLP_wentBed').html(infoStr);
 		eStr=(conver24to12(ttime,2)).split('|');
-		infoStr='<span>'+eStr[0]+':'+eStr[1]+'<span>'+eStr[2]+'</span></span>'
+		infoStr='<span>'+eStr[0]+':'+eStr[1]+'<span>'+eStr[2]+'</span></span>';
 		$('#SLP_wakeUp').html(infoStr);
 		
 		
@@ -796,10 +800,10 @@ $(function(){
 		
 
 		
-		infoStr='<span>'+formatTime(sleepTime)+'</span>'
+		infoStr='<span>'+formatTime(sleepTime)+'</span>';
 		$('#SLP_wholeSleep').html(infoStr);
 		
-		infoStr='<span>'+formatTime(slp.deepSleep)+'</span>'
+		infoStr='<span>'+formatTime(slp.deepSleep)+'</span>';
 		$('#SLP_deepSleep').html(infoStr);
 		
 		
@@ -814,10 +818,10 @@ $(function(){
 		
 		
 		if(switchsleepMode==0){
-			switchTap(0)
-			switchsleepMode=1
+			switchTap(0);
+			switchsleepMode=1;
 		}else{
-			switchTap(1)
+			switchTap(1);
 		}
 		
 
@@ -857,25 +861,25 @@ function dealUserData(data){
 		return;	
 		
 	}
-	sensorList=data.sensorList
-	back_ecode=data.ecode
+	sensorList=data.sensorList;
+	back_ecode=data.ecode;
 	$.cookie('back_ecode', back_ecode);
-	currentSensorID=0
+	currentSensorID=0;
 	showSensor();
 	loadNextServerProcess();
 }
 function showSensor(){
 	
-	var obj=sensorList[currentSensorID]
+	var obj=sensorList[currentSensorID];
 	
 	$('#INFO_name').html(obj.nickname+'');
 	
 	$("#INFO_head img").attr("src","upload/"+obj.headimage); 	
 	var power="0000"+obj.power;
 
-	power=power.substring(power.length-4,power.length)
+	power=power.substring(power.length-4,power.length);
 	$("#INFO_sensorIcon img").attr("src","images/sensor"+power+".png"); 	
-	$('#INFO_sensorStation').html('Connected<br /><span>battery:</span>'+obj.power+'%')
+	$('#INFO_sensorStation').html('Connected<br /><span>battery:</span>'+obj.power+'%');
 	showMessage(obj.message);
 	if(obj.message>0){
 		$('#MSG_iframe').attr("src","popmessage.html");
@@ -883,11 +887,11 @@ function showSensor(){
 		$('#MSG_iframe').attr("src","empty.html");
 	}
 	if(obj.unit=="Metric"){
-		$.cookie('back_unit',"Km")
+		$.cookie('back_unit',"Km");
 	}else{
-		$.cookie('back_unit',"Mile")
+		$.cookie('back_unit',"Mile");
 	}
-	slpGoal=obj.sleepgoal
+	slpGoal=obj.sleepgoal;
 	CCID=obj.detailid;
 
 }
@@ -936,7 +940,7 @@ function MM_preloadImages() { //v3.0
 		}
 	}
 	function changeSex(event){
-		sexID=event.data.id
+		sexID=event.data.id;
 		$("#INFO_sex"+sexID).attr('src',"images/se_yes.png");
 		$("#INFO_sex"+(1-sexID)).attr('src',"images/se_no.png");
 	}
@@ -947,12 +951,12 @@ function MM_preloadImages() { //v3.0
 		//--------------设置动画
 		//sumNameBar[1]="ACT_cal"
 		//alert($("#ACT_cal").progressbar("value"))
-		tarValue=$("#"+sumNameBar[sumSelectID][1]).progressbar("value")
-		curValue=$("#MS_activity").progressbar("value")
+		tarValue=$("#"+sumNameBar[sumSelectID][1]).progressbar("value");
+		curValue=$("#MS_activity").progressbar("value");
 		var sum_INT=window.setInterval(function(){ 
 		if(tarValue != curValue){
-			curValue+=(tarValue-curValue)/5
-			curValue<tarValue ? curValue=Math.ceil(curValue):curValue=Math.floor(curValue)
+			curValue+=(tarValue-curValue)/5;
+			curValue<tarValue ? curValue=Math.ceil(curValue):curValue=Math.floor(curValue);
 			$("#MS_activity").progressbar({value:curValue});
 			$('#MS_activityPercent').html(curValue+"%");
 		}else{ 
@@ -967,8 +971,8 @@ function MM_preloadImages() { //v3.0
 		
 		//$('body').css("overflow","hidden")
 		//resizeArea();
-		$('#lightBack').fadeIn(50)
-		$('#Frame_profileSetup').fadeIn()
+		$('#lightBack').fadeIn(50);
+		$('#Frame_profileSetup').fadeIn();
 		$("#IFRAME_profile").attr("src","profile.php?userid="+back_userid);
 	}
 
@@ -978,17 +982,17 @@ function MM_preloadImages() { //v3.0
 	}
 
 	function closeSearch(){
-		$('#lightBack').fadeOut()
-		$('#Frame_search').fadeOut()
+		$('#lightBack').fadeOut();
+		$('#Frame_search').fadeOut();
 	}
 	function closeGoalSetup(){
-		$('#lightBack').fadeOut()
-		$('#Frame_goalSetup').fadeOut()
+		$('#lightBack').fadeOut();
+		$('#Frame_goalSetup').fadeOut();
 	}
 	function closeProfileSetup(){
 
-		$('#lightBack').fadeOut()
-		$('#Frame_profileSetup').fadeOut()
+		$('#lightBack').fadeOut();
+		$('#Frame_profileSetup').fadeOut();
 		getUserInfomation();
 	}
 
@@ -1019,7 +1023,7 @@ function calculate_time_zone() {
 		dst = "1"; // daylight savings time is observed
 	}
 	$("#timezone").attr("value",convert(std_time_offset)+","+dst);
-	$("#PRO_timeZone").attr("value",$("#timezone").find("option:selected").text())
+	$("#PRO_timeZone").attr("value",$("#timezone").find("option:selected").text());
 	
 }
 
@@ -1052,15 +1056,15 @@ function changeSleepTime(){
 	
 	if(!checkMinusFormat($('#slpFromMin'))){return;}
 	if(!checkMinusFormat($('#slpToMin'))){return;}
-	fromdate=$("#slpFromDay").val()+" "+$('#slpFromMin').val()+":00"
-	todate=$("#slpToDay").val()+" "+$('#slpToMin').val()+":00"
-	fdate=new Date(new Date(Date.parse(fromdate.replace(/-/g,   "/"))))
-	tdate=new Date(new Date(Date.parse(todate.replace(/-/g,   "/"))))
+	fromdate=$("#slpFromDay").val()+" "+$('#slpFromMin').val()+":00";
+	todate=$("#slpToDay").val()+" "+$('#slpToMin').val()+":00";
+	fdate=new Date(new Date(Date.parse(fromdate.replace(/-/g,   "/"))));
+	tdate=new Date(new Date(Date.parse(todate.replace(/-/g,   "/"))));
 	fd=fdate.getTime();
 	td=tdate.getTime();
 	if(td<fd){
 		$('#slpToMin').focus();
-		return	
+		return;	
 	}
 	var outData={ucode:back_ucode,scode:back_scode,ecode:back_ecode,fdate:$("#slpFromDay").val(),tdate:$("#slpToDay").val(),ftime:$('#slpFromMin').val()+":00",ttime:$('#slpToMin').val()+":00",sdate:dateStr,source:"w"};
 	$.ajax({type: "POST",contentType: "application/json",dataType: "json",
@@ -1158,28 +1162,28 @@ function hidePopMessage(){
 }
 function showSetupBack(event){
 	
-	$('#'+backPos[event.data.id].itemName).removeClass('G_smallShadow')
+	$('#'+backPos[event.data.id].itemName).removeClass('G_smallShadow');
 	$('#Back_'+backPos[event.data.id].itemName).addClass('barBack_'+event.data.id);
 }	
 function hideSetupBack(event){
-	$('#'+backPos[event.data.id].itemName).addClass('G_smallShadow')
+	$('#'+backPos[event.data.id].itemName).addClass('G_smallShadow');
 	$('#Back_'+backPos[event.data.id].itemName).removeClass('barBack_'+event.data.id);
 }
 function showsearch(){
-	$('#lightBack').fadeIn(50)
-	$('#Frame_search').fadeIn(50)
+	$('#lightBack').fadeIn(50);
+	$('#Frame_search').fadeIn(50);
 	
 	
 }
 function showCalSetup(){
 	if(dateStr==nowDateStr){
 		//hideSetupBack();
-		$('#lightBack').fadeIn(50)
-		$('#Frame_goalSetup').fadeIn()
+		$('#lightBack').fadeIn(50);
+		$('#Frame_goalSetup').fadeIn();
 		back_ecode=$.cookie('back_ecode');
 		$("#IFRAME_goalSetup").attr("src","calsetup.php?ucode="+back_ucode+"&scode="+back_scode+"&ecode="+back_ecode+"&source=w&cdate="+mytime);
 	}else{
-		showwait("Sorry","Only today's goal could be setup.")
+		showwait("Sorry","Only today's goal could be setup.");
 	}
 		
 }
@@ -1189,7 +1193,7 @@ function hideAllPop(){
 var frameList= new Array('ACT','SLP','FRI');
 	
 function switchTap(fid){
-	hideAllPop()
+	hideAllPop();
 	for(var i=0;i<frameList.length;i++){
 		if(i != fid){
 			$('#tab'+frameList[i]).addClass('tapUnselect');
@@ -1204,15 +1208,15 @@ function switchTap(fid){
 				$('#Frame_'+frameList[i]).removeClass('G_bigRoundShadowSpc');
 			}
 			$('#Frame_'+frameList[i]).show();
-			adjustBarPosition()
+			adjustBarPosition();
 		}
 	}
 
 }
 function updateGoalInfo(cg,sg,dg){
-	caloriesGoal=cg
-	stepGoal=sg
-	disGoal=dg
+	caloriesGoal=cg;
+	stepGoal=sg;
+	disGoal=dg;
 	aniSetup();
 	
 	getWarning();
@@ -1221,15 +1225,15 @@ function changeActChart(event){
 		hideSetupBack(event);
 		if(CCID != event.data.id){
 			
-			CCID=event.data.id
-			act.data=totalDataList[CCID]    
+			CCID=event.data.id;
+			act.data=totalDataList[CCID] ;   
 			
 			act.init();
-			amode=0
+			amode=0;
 			if(actExtraDataList != ""){
 				act.edata=actExtraDataList;
 				act.add();
-				amode=1
+				amode=1;
 			}
 			adjustActArea(amode);
 			sumAct.change();
@@ -1244,18 +1248,18 @@ function barItem(){
 	this.p={belongs:"",smode:"",leftIcon:"",currentValue:0,totalValue:0,backColor:""};
 	
 	this.leftTitle="";
-	this.leftDown=""
+	this.leftDown="";
 	this.rightTitle="";
-	this.rightDown=""
-	this.percent=0
+	this.rightDown="";
+	this.percent=0;
 	this.currentPercent=0;
 	this.intValue=0;
 	this.width=0;
 	this.height=0;
 	this.units="";
-	this.backPic=""
-	this.frontPic=""
-	this.initMode=0
+	this.backPic="";
+	this.frontPic="";
+	this.initMode=0;
 	this.iconImage="";
 
 }
@@ -1268,16 +1272,16 @@ barItem.prototype.change=function(){
 	$('#'+this.p.belongs+'RightTop').html(carTitleItem[CCID].percent+"<span>%</span>");
 	$('#'+this.p.belongs+'Back').width(this.width*carTitleItem[CCID].percent/100);
 	
-}
+};
 
 
 
 
 barItem.prototype.init=function(){
 	if(this.initMode ==0){
-		this.intiMode=1
+		this.intiMode=1;
 		//------------删除所有子元素------------------------
-		$('#'+this.p.belongs+" div").each(function(){$(this).remove()});
+		$('#'+this.p.belongs+" div").each(function(){$(this).remove();});
 		this.width=$('#'+this.p.belongs).width();
 		this.height=$('#'+this.p.belongs).height();
 		//--------------添加底部颜色div区域-------------------------------------------
@@ -1305,7 +1309,7 @@ barItem.prototype.init=function(){
 	}
 	
 	this.p.totalValue>0 ? this.percent=(100*this.p.currentValue/this.p.totalValue).toFixed(1):this.percent=0;
-	if(this.percent>100){this.percent=100}
+	if(this.percent>100){this.percent=100;}
 	//alert(this.p.belongs+"  "+this.p.currentValue+"   "+this.p.totalValue+"   "+this.percent)
 	//$('#'+this.p.belongs+'LeftDown').html(this.p.currentValue+this.units);
 	$('#'+this.p.belongs+'RightTop').html(this.percent+"<span>%</span>");
@@ -1315,14 +1319,14 @@ barItem.prototype.init=function(){
 		case "s_proBarAct":
 			this.leftTitle="Activity";
 			this.leftDown=this.p.totalValue+" cal";
-			this.backPic="s_back.jpg"
-			this.frontPic="s_f_act.jpg"
+			this.backPic="s_back.jpg";
+			this.frontPic="s_f_act.jpg";
 			break;
 		case "s_proBarSlp":
 			this.leftTitle="Sleep";
 			this.leftDown=formatTime(this.p.totalValue);
-			this.backPic="s_back.jpg"
-			this.frontPic="s_f_slp.jpg"
+			this.backPic="s_back.jpg";
+			this.frontPic="s_f_slp.jpg";
 			break;
 		case "l_proBarCal":
 			this.leftTitle=(this.p.currentValue).toFixed(1)+" <span>cal burned</span>";
@@ -1332,29 +1336,29 @@ barItem.prototype.init=function(){
 			}else{
 				this.rightDown="0 cal remain";
 			}
-			this.backPic="l_back.jpg"
-			this.frontPic="l_f_act.jpg"
+			this.backPic="l_back.jpg";
+			this.frontPic="l_f_act.jpg";
 			break;
 		case "m_proStep":
 			this.leftTitle=this.p.currentValue+" <span>of "+this.p.totalValue+"</span>";
 			this.leftDown=this.p.currentValue+" Steps Taken";
-			this.backPic="l_back.jpg"
-			this.frontPic="l_f_act.jpg"
+			this.backPic="l_back.jpg";
+			this.frontPic="l_f_act.jpg";
 			break;
 		case "m_proMile":
 			temp=parseFloat(this.p.totalValue);
 			this.leftTitle=this.p.currentValue.toFixed(3) +" <span>"+$.cookie('back_unit')+" of "+temp.toFixed(3)+" "+$.cookie('back_unit')+"</span>";
 			//this.leftDown=Math.floor(100*this.p.currentValue)/100+" "+$.cookie('back_unit')+" Travel";
 			this.leftDown=(this.p.currentValue).toFixed(3)+" "+$.cookie('back_unit')+" Travel";
-			this.backPic="l_back.jpg"
-			this.frontPic="l_f_act.jpg"
+			this.backPic="l_back.jpg";
+			this.frontPic="l_f_act.jpg";
 			break;
 		case "l_proBarSlp":
 			this.leftTitle=formatTime(this.p.currentValue);
 			this.leftDown="Deep sleep";
 			this.rightDown=formatTime(this.p.totalValue);
-			this.backPic="l_back.jpg"
-			this.frontPic="l_f_slp.jpg"
+			this.backPic="l_back.jpg";
+			this.frontPic="l_f_slp.jpg";
 			break;
 	}
 	$("#"+this.p.belongs).css("background-image","url('images/"+this.backPic+"')");
@@ -1386,18 +1390,18 @@ barItem.prototype.init=function(){
 		window.clearInterval(this.intValue)	
 	};}, 20);
 	*/	
-}
+};
 barItem.prototype.adjust=function(){
 	$("#"+this.p.belongs+"Left").css("top",(this.height-$("#"+this.p.belongs+"Left").height())/2);	
 	$("#"+this.p.belongs+"Right").css("top",(this.height-$("#"+this.p.belongs+"Right").height())/2);
-}
+};
 function adjustBarPosition(){
-	bigCal.adjust()
-	sumAct.adjust()
-	mStep.adjust()
-	mMile.adjust()
-	sumSlp.adjust()
-	bigSlp.adjust()
+	bigCal.adjust();
+	sumAct.adjust();
+	mStep.adjust();
+	mMile.adjust();
+	sumSlp.adjust();
+	bigSlp.adjust();
 }
 function updatedHead(headpic){
 	//alert("change senseu"+headpic);
@@ -1410,37 +1414,37 @@ function adjustActArea(mode){
 	$('#Frame_ACT').height(417+dy);
 	$('#ACT').height(147+dy);
 	for(i=1;i<4;i++){
-		$('#Back_'+backPos[i].itemName).css("top",backPos[i].y+dy)
+		$('#Back_'+backPos[i].itemName).css("top",backPos[i].y+dy);
 	}
 	
 	mode==0 ? $('#ACT_eContent').hide():$('#ACT_eContent').show();
 	
 }
 function showFriendList(r){
-	$('#FRI_list div').each(function(){$(this).remove()});
+	$('#FRI_list div').each(function(){$(this).remove();});
 	
 	
-	friendListData=r.friendlist
+	friendListData=r.friendlist;
 	showFriendLabel();
 	for(var i=0;i<r.friendlist.length;i++){
 		var obj=r.friendlist[i];
 		$('<div class="FriItem" id="friItem'+i+'"></div>').appendTo($('#FRI_list'));
-		var obja=new friendItem()
-		obja.itemID=i
-		obja.picURL="upload/"+obj.head
-		obja.pname=obj.nickname
-		obja.perAct=Math.floor(obj.peract*100)
-		obja.perSlp=Math.floor(obj.perslp*100)
-		obja.init()
+		var obja=new friendItem();
+		obja.itemID=i;
+		obja.picURL="upload/"+obj.head;
+		obja.pname=obj.nickname;
+		obja.perAct=Math.floor(obj.peract*100);
+		obja.perSlp=Math.floor(obj.perslp*100);
+		obja.init();
 	}
 	$('.FriItem').mouseenter(function(){
-		$(this).addClass("friOverItem")
-		$(this).addClass("G_bigRoundShadowNoBorder")
+		$(this).addClass("friOverItem");
+		$(this).addClass("G_bigRoundShadowNoBorder");
 		$('#btnContent'+$(this).attr("itemID")).show();
-	})
+	});
 	$('.FriItem').mouseleave(function(){
 		$(this).removeClass("friOverItem");
-		$(this).removeClass("G_bigRoundShadowNoBorder")
+		$(this).removeClass("G_bigRoundShadowNoBorder");
 		$('#btnContent'+$(this).attr("itemID")).hide();
 		
 	});
@@ -1449,53 +1453,53 @@ function showFriendList(r){
 }
 
 function showFriendPer(type,id,percent,color){
-	var obj=new smallBar()
-	obj.belongs="fri"+type+"PerBar"+id
-	obj.color=color
-	obj.percent=percent
-	obj.init()
-	$('#fri'+type+'Per'+id).html(percent)
-	$('#fri'+type+'Per'+id).css("color",color)
-	$('#fri'+type+'PerMark'+id).css("color",color)
+	var obj=new smallBar();
+	obj.belongs="fri"+type+"PerBar"+id;
+	obj.color=color;
+	obj.percent=percent;
+	obj.init();
+	$('#fri'+type+'Per'+id).html(percent);
+	$('#fri'+type+'Per'+id).css("color",color);
+	$('#fri'+type+'PerMark'+id).css("color",color);
 }
 
 function smallBar(){
 	
-	this.belongs=""
-	this.percent=0
+	this.belongs="";
+	this.percent=0;
 	this.width=0;
 	this.height=0;
 	this.color="#FF9900";
-	this.initMode=0
+	this.initMode=0;
 }
 smallBar.prototype.init=function(){
 	
 	//------------删除所有子元素------------------------
-	$('#'+this.belongs+" div").each(function(){$(this).remove()});
+	$('#'+this.belongs+" div").each(function(){$(this).remove();});
 	this.width=$('#'+this.belongs).width();
 	this.height=$('#'+this.belongs).height();
 	//--------------添加底部颜色div区域-------------------------------------------
 	$('<div id="'+this.belongs+'Back" class="G_smallRound"></div>').appendTo($('#'+this.belongs));
 	$("#"+this.belongs+"Back").height(this.height);
-	$("#"+this.belongs+"Back").css("background",this.color)
+	$("#"+this.belongs+"Back").css("background",this.color);
 
 	$('#'+this.belongs+'Back').width(this.width*this.percent/100);
 	
 	
-}
+};
 function friendItem(){
-	this.belongs=""
-	this.itemID=0
+	this.belongs="";
+	this.itemID=0;
 	this.picURL="";
-	this.pname=""
-	this.perAct=0
-	this.perSlp=0
-	this.sensorID=0
+	this.pname="";
+	this.perAct=0;
+	this.perSlp=0;
+	this.sensorID=0;
 }
-var currentFriendItemID=0
+var currentFriendItemID=0;
 friendItem.prototype.init=function(){
-	this.belongs="friItem"+this.itemID
-	$('#'+this.belongs+" div").each(function(){$(this).remove()});
+	this.belongs="friItem"+this.itemID;
+	$('#'+this.belongs+" div").each(function(){$(this).remove();});
 	var strs='<table cellpadding="0" cellspacing="0">';
 	strs+='<tr><td width="116" rowspan="4" class="pictable" >';
 	strs+='<div class="headback G_smallRound G_smallShadow" ><div class="headpic G_smallRound" id="friHead'+this.itemID+'"><img src="'+this.picURL+'" width=100% height=100% /></div></div></td>';
@@ -1512,16 +1516,16 @@ friendItem.prototype.init=function(){
 	strs+='<tr><td width="80"></td>';
     strs+='<td width="67"><img src="images/fri_del.png" width="63" height="18" id="btnDel'+this.itemID+'" class="downButton" /></td></tr></table></td></tr></table>';
 	$(strs).appendTo($('#'+this.belongs));
-	showFriendPer("Act",this.itemID,this.perAct,"#FF9900")
-	showFriendPer("Slp",this.itemID,this.perSlp,"#00c0ff")
+	showFriendPer("Act",this.itemID,this.perAct,"#FF9900");
+	showFriendPer("Slp",this.itemID,this.perSlp,"#00c0ff");
 	//$('#friHead'+this.itemID).css("background","url(images/fri_undef.jpg)");
-	$//('#friHead'+this.itemID).css("background","url("+this.picURL+")");
-	$('#friItem'+this.itemID).attr("itemID",this.itemID)
+	//$('#friHead'+this.itemID).css("background","url("+this.picURL+")");
+	$('#friItem'+this.itemID).attr("itemID",this.itemID);
 	$('#btnDel'+this.itemID).bind("click",{sid:this.sensorID,cid:this.itemID},removeFriend);
-}
+};
 
 function removeFriend(event){
-	currentFriendItemID=event.data.cid
+	currentFriendItemID=event.data.cid;
 	back_ecode=$.cookie('back_ecode');
 	var outData={ucode:back_ucode,scode:back_scode,ecode:back_ecode,rcode:friendListData[currentFriendItemID].scode,source:"w"};
 	$.ajax({type: "POST",contentType: "application/json",dataType: "json",
@@ -1536,11 +1540,11 @@ function removeFriend(event){
 }
 
 function showRemove(r){
-	if(r.status != 200){return}
+	if(r.status != 200){return;}
 	//alert(currentFriendItemID);
 	$('#friItem'+currentFriendItemID).remove();
-	friendListData.splice(currentFriendItemID,1)
-	showFriendLabel()
+	friendListData.splice(currentFriendItemID,1);
+	showFriendLabel();
 }
 function showFriendLabel(){
 	if(friendListData.length==0){
@@ -1552,9 +1556,9 @@ function showFriendLabel(){
 		$('#s_proBarFri').show();
 	}
 	var obj=friendListData[0];
-	picURL="upload/"+obj.head
-	pname=obj.nickname
-	perAct=Math.floor(obj.peract*100)
+	picURL="upload/"+obj.head;
+	pname=obj.nickname;
+	perAct=Math.floor(obj.peract*100);
 	
 	strs='<table align="center" height=50 border="0" cellpadding="0" cellspacing="0">';
 	strs+='<tr><td width=50 ><img src="'+picURL+'" width="50" height="50" /></td><td class="friLabName">'+pname+'</td>';

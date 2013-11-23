@@ -434,9 +434,10 @@ function switchItem(event){
 
 		//------------删除除绘图区"_can"外所有子元素------------------------
 		$('#'+this.belongs+" div").each(function(){$('#'+this.id).remove();});
-		$('#'+this.belongs+'_can').remove();
-		$('<canvas id="'+this.belongs+'_can" width=890 height=114></canvas>').appendTo($('#'+this.belongs));
-		
+		var ctx = document.getElementById(this.belongs+'_can').getContext('2d');
+		ctx.clearRect(0,0,890,114);
+		this.tData=[];
+		this.vData=[];
 		if(this.belongs=="ACT"){
 			$('<div class="G_eContent" id="'+this.belongs+'_eContent"></div>').appendTo($('#'+this.belongs));
 			$('<div class="G_ebar" id="'+this.belongs+'_ebar"></div>').appendTo($('#'+this.belongs+'_eContent'));
@@ -627,6 +628,7 @@ function switchItem(event){
 
 		}
 		//----------------画水平线--------------------------------
+		
 		$('#'+this.belongs+'_can').drawLine({
   			strokeStyle: "#bfbfbf",  strokeWidth: 1,
   			x1: this.leftPadding, y1: myLedo.colHeight,
