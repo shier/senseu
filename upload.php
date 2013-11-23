@@ -3,7 +3,7 @@
 <head>
 <title>upload</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script language="javascript" src="js/swfobject.js"></script>
 <script type="text/javascript">

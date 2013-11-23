@@ -1,14 +1,14 @@
 var menuList=new Array();
-menuList[11]="privacy.php"
-menuList[12]="about.php"
-menuList[13]="help.php"
-menuList[14]="download.php"
+menuList[11]="privacy.php";
+menuList[12]="about.php";
+menuList[13]="help.php";
+menuList[14]="download.php";
 $(function(){
 
 	for(var i=11;i<15;i++){
 		if(i != parent.pageID){
 			$('#menu'+i).addClass("G_bottomMenuTextBtn");
-			$('#menu'+i).attr("mid",i)
+			$('#menu'+i).attr("mid",i);
 			$('#menu'+i).click(function(){
 				//alert(menuList[$(this).attr("mid")]);
 				

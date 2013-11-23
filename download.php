@@ -23,7 +23,7 @@ body {margin:0px;
 .headtitle{font-size:36px;color:#66bd00;line-height:36px;}
 </style>
 <script>var pageID=14</script>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/download.js"></script>
 <script type="text/javascript" src="js/jquery.corner.js"></script>

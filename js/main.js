@@ -1,7 +1,7 @@
-var iconID=0
+var iconID=0;
 var pageID=1; // homepage
 var t=n=0;
-var nextIconID=0
+var nextIconID=0;
 var count=6;
 var clickIconID=1;
 var showmode=1;
@@ -9,7 +9,7 @@ document.write("<script type='text/javascript' src='js/reglogin.js'></"+"script>
 function request(paras){
 		var url = location.href;
 		var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-		var paraObj = {}
+		var paraObj = {};
 		for (i=0; j=paraString[i]; i++){
 			paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
 		}
@@ -75,7 +75,7 @@ $(function(){
 });
 function showVideo(){
 	$('body').stopTime();
-	showmode=0
+	showmode=0;
 	showPop("homeVideo","");
 	if(checkMobile()){
 		$('#videoFrame').attr("src","homevideo.html");
@@ -89,11 +89,11 @@ function showVideo(){
 	
 }
 function hideVideo(){
-	hidePop("homeVideo")
+	hidePop("homeVideo");
 	$('#videoFrame').attr("src","empty.html");
 	showmode=1;
 	$('#videoButton').fadeIn();
-	$('body').oneTime('6s','autoload',function(){ showAuto()});
+	$('body').oneTime('6s','autoload',function(){ showAuto();});
 	if(checkMobile()){
 		$('#darkBack').click(function(){}); 
 	}
@@ -127,10 +127,10 @@ function dealCheckBack(r){
 }
 	
 function showbuyin(event){
-	$('#buyover').stop(false,true).fadeIn()
+	$('#buyover').stop(false,true).fadeIn();
 }
 function showbuyout(event){
-	$('#buyover').stop(false,true).fadeOut()
+	$('#buyover').stop(false,true).fadeOut();
 }
 function MM_swapImgRestore() { //v3.0
   var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
@@ -157,16 +157,16 @@ function showout(event){
 	MM_swapImgRestore();
 }
 function showin(event){
-	id=event.data.id
-	MM_swapImage('smallIcon'+id,'','images/icon'+id+'_2.png',1)
+	id=event.data.id;
+	MM_swapImage('smallIcon'+id,'','images/icon'+id+'_2.png',1);
 	
 }
 function autoshow(){
-	$('body').oneTime('9s','autoload',function(){ showAuto()}); 
+	$('body').oneTime('9s','autoload',function(){ showAuto();}); 
 }
 function showIcon(){
 	for(i=0;i<count;i++){
-		obj=$("#iconImg"+i)
+		obj=$("#iconImg"+i);
 		if(i==iconID){
 			obj.hide();
 		}else{
@@ -185,7 +185,7 @@ function showout(event){
 }
 */
 function jumppage(event){
-	iconID=event.data.id
+	iconID=event.data.id;
 	showAuto();
 	
 }
@@ -194,10 +194,10 @@ function showAuto(){
 	if(showmode==1){
 		$('body').stopTime();
 		for(var i=0;i<count;i++){
-			i==iconID ? $("#pic"+i).fadeIn():$("#pic"+i).fadeOut()
+			i==iconID ? $("#pic"+i).fadeIn():$("#pic"+i).fadeOut();
 		}
-		showIcon()
-		iconID==count-1 ? iconID=0:iconID++
-		$('body').oneTime('6s','autoload',function(){ showAuto()}); 
+		showIcon();
+		iconID==count-1 ? iconID=0:iconID++;
+		$('body').oneTime('6s','autoload',function(){ showAuto();}); 
 	}
 }

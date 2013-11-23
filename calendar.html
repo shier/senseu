@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>calc</title>
 <link href="css/global.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <style type="text/css">
 body {
@@ -101,7 +101,8 @@ body {
     
     </div>
   	
-</div><div id="info"></div>
+</div>
+<div id="info"> </div>
 <script>
 	var DaysInEachMonth=new Array(31,31,28,31,30,31,30,31,31,30,31,30,31);
 	var monthNameList=new Array("","Janeary","Feberay","March","April","May","June","July","August","September","October","Novenber","December");
@@ -114,7 +115,7 @@ body {
 	function request(paras){
 		var url = location.href;
 		var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-		var paraObj = {}
+		var paraObj = {};
 		for (i=0; j=paraString[i]; i++){
 			paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
 		}
@@ -137,17 +138,17 @@ body {
 		//alert($('#numberArea').html());
 		$('#numberArea div').each(function(){
 			if(Number($(this).html())==nday && $(this).attr("mode")==1){
-				$(this).removeClass("currentOver")
-				$(this).addClass("today")
+				$(this).removeClass("currentOver");
+				$(this).addClass("today");
 			}else{
-				$(this).removeClass("today")
+				$(this).removeClass("today");
 			}
 			
 		});
 
 	}
 	//$('#info').html(strs);
-	var Nyear,Nmonth,Nday
+	var Nyear,Nmonth,Nday;
 	$(function(){
 		var back_ucode=$.cookie('back_ucode');
 		var back_scode=$.cookie('back_scode');
@@ -160,16 +161,16 @@ body {
 		}
 		Nmonth=request("month");
 		if(Nmonth == ""){
-			Nmonth=(new Date()).getMonth()
+			Nmonth=(new Date()).getMonth();
 		}else{
 			Nmonth=Number(Nmonth);
 			if(Nmonth==0){
 				Nmonth=12;
-				Nyear--
+				Nyear--;
 			}
 			if(Nmonth==13){
 				Nmonth=1;
-				Nyear++
+				Nyear++;
 			}
 		}
 		Nday=request("day");
@@ -178,19 +179,19 @@ body {
 		}else{
 			Nday=Number(Nday);
 		}
-		if(Nday>DaysInEachMonth[Nmonth]){Nday=DaysInEachMonth[Nmonth]}
+		if(Nday>DaysInEachMonth[Nmonth]){Nday=DaysInEachMonth[Nmonth];}
 		//alert(Nday)
 		var day = new Date(Nyear+"/"+Nmonth+"/1"); //将日期值格式化
-		var firstDayofNewMonth=day.getDay()
+		var firstDayofNewMonth=day.getDay();
 		var dayInList = new Array();
-		var calBackColor=new Array("#66bd00","#9c9c9c","#ffa200","#454545","#e0e0e0")
-		strs=""
+		var calBackColor=new Array("#66bd00","#9c9c9c","#ffa200","#454545","#e0e0e0");
+		strs="";
 		for(i=0;i<firstDayofNewMonth;i++){
 			dayInList.push({day:DaysInEachMonth[Nmonth-1]-firstDayofNewMonth+1+i,color:4,clickMode:0});
 			strs+="i:"+i+" day:"+(DaysInEachMonth[Nmonth-1]-firstDayofNewMonth+1+i)+"<br>";
 		}
 		for(i=1;i<=DaysInEachMonth[Nmonth];i++){
-			fontColorID=Number(Math.random()*4)
+			fontColorID=Number(Math.random()*4);
 			dayInList.push({day:i,color:fontColorID,clickMode:1});
 			strs+="i:"+i+" day:"+i+"<br>";
 		}
@@ -199,7 +200,7 @@ body {
 				dayInList.push({day:i,color:4,clickMode:0});
 				strs+="i:"+i+" day:"+i+"<br>";
 			}else{
-				i=15
+				i=15;
 			}
 		}
 		for(i=0;i<42;i++){
@@ -207,12 +208,12 @@ body {
 			childDiv.id="day"+i;
 			childDiv.css("color",calBackColor[dayInList[i].color]);
 			if(Nday==dayInList[i].day && dayInList[i].clickMode==1){
-				childDiv.addClass("today")
+				childDiv.addClass("today");
 			}
 			if(dayInList[i].clickMode==1){
 				//childDiv.css("cursor","pointer")
-				childDiv.attr("id","d"+dayInList[i].day)
-				childDiv.attr("day",dayInList[i].day)
+				childDiv.attr("id","d"+dayInList[i].day);
+				childDiv.attr("day",dayInList[i].day);
 				
 			}
 			childDiv.appendTo($('#numberArea'));
@@ -230,13 +231,13 @@ body {
 	function dealData(r){
 	
 		var dataList=r.data;
-		back_ecode=r.ecode
+		back_ecode=r.ecode;
 		$.cookie('back_ecode', back_ecode);
 		
 		for(i=0;i<dataList.length;i++){
-			var obj=$("#d"+dataList[i])
-			obj.css("cursor","pointer")
-			obj.addClass("clickday")
+			var obj=$("#d"+dataList[i]);
+			obj.css("cursor","pointer");
+			obj.addClass("clickday");
 			obj.bind("click",{day:obj.attr("day")},jumpToDay);	
 			obj.bind({mouseenter:function(event){$(this).addClass("currentOver");}});
 			obj.bind({mouseleave:function(event){$(this).removeClass("currentOver");}});

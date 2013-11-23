@@ -27,7 +27,7 @@
 .pic_content {font-size:14px; color:#8b8c8e; line-height:20px}
 .textbox{position:absolute}
 </style>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 
 <script type="text/javascript" src="js/hiw.js"></script>

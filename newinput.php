@@ -7,7 +7,7 @@
 <link href="css/main.css" type="text/css" rel="stylesheet" />
 <link href="css/redmond/jquery-ui-1.10.1.custom.css" rel="stylesheet">
 
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>

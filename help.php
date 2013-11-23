@@ -37,7 +37,7 @@
 #a1 {background:url(images/help_img_r1_c12.png) center right no-repeat;}
 </style>
 <script>var pageID=13</script>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/reglogin.js"></script>
 <script type="text/javascript" src="js/jquery.corner.js"></script>

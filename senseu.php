@@ -328,7 +328,7 @@ input {text-align:center; border:none}
 <link rel="stylesheet" href="js/ui-1.10.0/ui-lightness/jquery-ui-1.10.0.custom.min.css" type="text/css" />
 <link rel="stylesheet" href="css/jquery.ui.timepicker.css" type="text/css" />
 
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 
 
     <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.widget.min.js"></script>
