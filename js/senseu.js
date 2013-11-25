@@ -470,7 +470,8 @@ $(function(){
 		
 		dateStr=currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate();
 		//clean all map---------
-		
+		var ctx = document.getElementById('ACT_can').getContext('2d');
+		ctx.clearRect(0,0,890,114);
 		
 		/*
 		if(dateStr==nowStr){

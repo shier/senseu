@@ -329,10 +329,16 @@ input {text-align:center; border:none}
 <link rel="stylesheet" href="css/jquery.ui.timepicker.css" type="text/css" />
 
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="js/ui-1.10.0/jquery.ui.widget.min.js"></script>
-<script type="text/javascript" src="js/ui-1.10.0/jquery.ui.tabs.min.js"></script>
-<script type="text/javascript" src="js/ui-1.10.0/jquery.ui.position.min.js"></script>
-<script type="text/javascript" src="js/jquery.ui.timepicker.js"></script>
+
+
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.widget.min.js"></script>
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.tabs.min.js"></script>
+    <script type="text/javascript" src="js/ui-1.10.0/jquery.ui.position.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.ui.timepicker.js"></script>
+
+ 
+
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script type="text/javascript" src="js/excanvas.js"></script>
@@ -342,7 +348,19 @@ input {text-align:center; border:none}
 <script type="text/javascript" src="js/senseu.js"></script>
 
 
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7840951-15']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 
 <body onload="MM_preloadImages('images/activity_label_0.png','images/activity_label_1.png','images/activity_label_2.png','images/sleep_label_0.png','images/sleep_label_1.png','images/sleep_label_2.png')">

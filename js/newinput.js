@@ -13,25 +13,25 @@ var outList=[];
 var currentDate;
 var DaysInEachMonth=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 var nowDate=new Date();
-var nowYear=nowDate.getFullYear();
-var nowMonth=nowDate.getMonth()+1;
-var nowDay=nowDate.getDate();
-currentDate=nowYear+"-";
-if(nowMonth>9){currentDate+=nowMonth;}else{currentDate+="0"+nowMonth;}
-if(nowDay>9){currentDate+="-"+nowDay;}else{currentDate+="-0"+nowDay;}
+var nowYear=nowDate.getFullYear()
+var nowMonth=nowDate.getMonth()+1
+var nowDay=nowDate.getDate()
+currentDate=nowYear+"-"
+if(nowMonth>9){currentDate+=nowMonth}else{currentDate+="0"+nowMonth}
+if(nowDay>9){currentDate+="-"+nowDay}else{currentDate+="-0"+nowDay}
 
 var back_ucode=$.cookie('back_ucode');
 var back_scode=$.cookie('back_scode');
 var back_ecode=$.cookie('back_ecode');
 var back_loginMode=$.cookie('back_loginMode');
 
-var back_bmr,back_sw;
+var back_bmr,back_sw
 var sensorList=new Array(); 
-var currentSensorID=0;
+var currentSensorID=0
 var myDate = new Date();
 	var my=myDate.getFullYear();
 	var mm=myDate.getMonth()+1;
-	var md=myDate.getDate();
+	var md=myDate.getDate()
 	
 	var mytime=my+"-"+mm+"-"+md+" "+myDate.toLocaleTimeString();  
 	
@@ -55,20 +55,20 @@ $(function(){
 	//progressbarValue = $("#processbar" ).find(".ui-progressbar-value" );
 	//progressbarValue.css({"background": '#66bd00'});
 	$('#addnew').button({icons:{primary:"ui-icon-plusthick"}});
-	$( "#addnew" ).click(function() {addNewTimeData({mode:0,from:0,to:0});});
+	$( "#addnew" ).click(function() {addNewTimeData({mode:0,from:0,to:0})});
 	$('#autoBuild').button({icons:{primary:"ui-icon-lightbulb"}});
-	$( "#autoBuild" ).click(function() {autoBuild($('#parts').spinner("value"));});
+	$( "#autoBuild" ).click(function() {autoBuild($('#parts').spinner("value"))});
 	$('#parts').spinner({max:24,min:1});
-	$('#cleanData').button();
+	$('#cleanData').button()
 	$('#cleanData').button({icons:{primary:"ui-icon-closethick"}});
-	$( "#cleanData" ).click(function() {cleanData();});
-	$('#zeroData').button();
+	$( "#cleanData" ).click(function() {cleanData()});
+	$('#zeroData').button()
 	$('#zeroData').button({icons:{primary:"ui-icon-arrowthickstop-1-s"}});
-	$( "#zeroData" ).click(function() {zeroData(););
-	$('#randValue1').button();
+	$( "#zeroData" ).click(function() {zeroData()});
+	$('#randValue1').button()
 	$('#randValue1').button({icons:{primary:"ui-icon-script"}});
 	$( "#randValue1" ).click(function() {randBuildValue()});
-	$('#clearDatabase').button();
+	$('#clearDatabase').button()
 	$('#clearDatabase').button({icons:{primary:"ui-icon-trash"}});
 	$( "#clearDatabase" ).click(function() {delDataBase()});
 	$('#valuelist').hide();

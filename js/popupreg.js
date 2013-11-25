@@ -2,14 +2,14 @@
 var myDate = new Date();
 var my=myDate.getFullYear();
 var mm=myDate.getMonth()+1;
-var md=myDate.getDate();
+var md=myDate.getDate()
 	
 var mytime=my+"-"+mm+"-"+md+" "+myDate.toLocaleTimeString();  
 
 function request(paras){
 		var url = location.href;
 		var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
-		var paraObj = {};
+		var paraObj = {}
 		for (i=0; j=paraString[i]; i++){
 			paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
 		}
@@ -32,14 +32,14 @@ function request(paras){
 		$('#regClose').click(function(){
   			//$('#regBack').hide();
 			
-			if(parent.pageID==2){return;}
+			if(parent.pageID==2){return}
 			$('#regArea').hide();
 			parent.hidePop('popupReg');
 		});
 		$('#loginClose').click(function(){
   			//$('#regBack').hide();
 			
-			if(parent.pageID==2){return;}
+			if(parent.pageID==2){return}
 			$('#loginArea').hide();
 			parent.hidePop('popupReg');
 		});
@@ -49,7 +49,7 @@ function request(paras){
 		
 		$('#forgetClose').click(function(){
   			//$('#regBack').hide();
-			if(parent.pagdID==2){return;}
+			if(parent.pagdID==2){return}
 			$('#forgetArea').hide();
 			parent.hidePop('popupReg');
 		});
@@ -73,15 +73,15 @@ function request(paras){
 		//-=------三个检查-------------------
 		$('.bigButton img').hide();
 		$('.bigButton').bind({
-			mouseenter:function(event){showover($(this).attr("id"));},
-			mouseleave:function(event){showout($(this).attr("id"));}
+			mouseenter:function(event){showover($(this).attr("id"))},
+			mouseleave:function(event){showout($(this).attr("id"))}
 		});	
 		
-		$('#btnSignup').click(function(){checkSignUp();});
-		$('#btnForget').click(function(){checkForget();});
-		$('#pop_btnLogin').click(function(){checkLogin();});
-		$('#getPassHelp').click(function(){getHelp();});
-		$('#btnResetPass').click(function(){checkReset();});
+		$('#btnSignup').click(function(){checkSignUp()});
+		$('#btnForget').click(function(){checkForget()});
+		$('#pop_btnLogin').click(function(){checkLogin()});
+		$('#getPassHelp').click(function(){getHelp()});
+		$('#btnResetPass').click(function(){checkReset()});
 		//--------初始化赋值---------------------
 		if($.cookie('userEmail') != null){
 			$('#pop_loginEmail').val($.cookie('userEmail'));
@@ -206,7 +206,7 @@ function request(paras){
 			return false;
 		}
 		$('#btnSignup').css('cursor','auto');
-		$('#btnSignup').unbind("click");
+		$('#btnSignup').unbind("click") 
 		$('.popupLongText').attr('disabled', "disabled"); 
 		$('.popupShortText').attr('disabled', "disabled"); 
 		
@@ -300,7 +300,7 @@ function request(paras){
 		};
 		$.cookie('tempEmail', jmail);
 		$('#pop_btnLogin').css('cursor','auto');
-		$('#pop_btnLogin').unbind("click");
+		$('#pop_btnLogin').unbind("click") 
 		$('.pop_loginInput').attr('disabled', "disabled"); 
 		
 		var outData={email:jmail,password:jpass,ndate:mytime,source:"w"};
@@ -337,7 +337,7 @@ function request(paras){
 	function enableLoginArea(){
 
 		$('#pop_btnLogin').css('cursor','pointer');
-		$('#pop_btnLogin').click(function(){pop_btnLogin();});
+		$('#pop_btnLogin').click(function(){pop_btnLogin()});
 		$('.pop_loginInput').removeAttr("disabled"); 
 	}
 //--------------check forget
@@ -385,7 +385,7 @@ function request(paras){
 		}
 		if(status==200){ //--------OK
 			$('#forget_back').html("Your email is on its way!<br>If you don't see the email in the next 10 minutes, check your spam folder first then try sending it again. Still don't see it? Please <span class='btnHand' id='getPassHelpAfter'>contact us</span>.");
-			$('#getPassHelpAfter').click(function(){getHelp();});
+			$('#getPassHelpAfter').click(function(){getHelp()});
 			$('#btnForget').hide();
 			$('#btnClose').show();
 			
@@ -412,9 +412,9 @@ function request(paras){
 			$('#pop_loginEmail').val(obj.mail);
 			$('#pop_loginPass').val(obj.pass);
 			if(obj.mode=="email"){
-				$('#loginWrongEmail').html(obj.err);
+				$('#loginWrongEmail').html(obj.err)
 			}else{
-				$('#loginWrongPass').html(obj.err);
+				$('#loginWrongPass').html(obj.err)
 			}
 		}
   		//$('#regBack').fadeTo(0,0.77);
