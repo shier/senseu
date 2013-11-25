@@ -92,6 +92,7 @@ function drawProcess() {
 			context.stroke();
 		
             //在中间写字
+            context.globalCompositeOperation='lighter';
 	    	context.font = "bold 9pt Arial";
 	    	context.fillStyle = '#e74c3c';
 	    	context.textAlign = 'center';

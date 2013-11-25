@@ -435,7 +435,7 @@ function switchItem(event){
 		//------------删除除绘图区"_can"外所有子元素------------------------
 		$('#'+this.belongs+" div").each(function(){$('#'+this.id).remove();});
 		var ctx = document.getElementById(this.belongs+'_can').getContext('2d');
-		ctx.clearRect(0,0,890,114);
+		ctx.clearRect(0,0,myLedo.chartWidth,myLedo.colHeight);
 		this.tData=[];
 		this.vData=[];
 		if(this.belongs=="ACT"){
